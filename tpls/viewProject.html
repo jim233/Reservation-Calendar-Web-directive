@@ -1,0 +1,112 @@
+<div class="big_contain">
+	<div class="AR_box">
+		<div class="sub_contain">
+			<div class="sub_title_contain">
+				<div class="sub_title">View Projects</div>
+				<div class="spell_contain">
+					<div class="spell_btn" ng-click="goAddReservation()">
+						<img class="spell_img" src="images/display_reservation_conflicts/u1023.png">
+						<div class="spell_text">Calendar Display</div>
+						<img class="spell_img1" src="images/find_reservation/u746.png">
+					</div>
+				</div>
+			</div>
+			<div class="row text_size14">
+				<div class="col-md-12 col-xs-12 box_line_height row_top"><span>Project name ：</span><span>Project 1</span></div>
+			</div>
+			<div style="float:left; width: 100%; overflow-x:auto; height:auto;clear:both; margin-top:20px;">
+				<table border="1" cellpadding="3%" width="95%" style="min-width: 700px;">
+					<tr style="background-color: #AAB400; height: 50px;">
+						<th colspan="1">Platform</th>
+						<th colspan="1">System</th>
+						<th colspan="1">Start Date</th>
+						<th colspan="1">End Date</th>
+						<!--<th colspan="1">Project B1 name activity</th>-->
+					</tr>
+					<tr ng-repeat="col in VPC.pageTableRepeat">
+						<td ng-bind="col.RequestID"></td>
+						<td ng-bind="col.RequestType"></td>
+						<td ng-bind="col.Originator"></td>
+						<td ng-bind="col.Date"></td>
+						<!--<td ng-bind="col.LeadAI"></td>-->
+					</tr>
+				</table>
+			</div>
+			<nav>
+				<ul class="pagination">
+					<li>
+						<a ng-click="Previous()">
+							<span>pre</span>
+						</a>
+					</li>
+					<li ng-repeat="page in VPC.pageList" ng-class="{active: VPC.isActivePage(page)}">
+						<a ng-click="VPC.selectPage(page)">{{ page }}</a>
+					</li>
+					<li>
+						<a ng-click="Next()">
+							<span>next</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+			<div class="row text_size14">
+				<div class="col-md-12 col-xs-12 box_line_height row_top"><span>Other Projects：</span><span>Project B1</span></div>
+			</div>
+			<div style="float:left; width: 100%; overflow-x:auto; height:auto;clear:both; margin-top:20px;">
+				<table border="1" cellpadding="3%" width="95%" style="min-width: 700px;">
+					<tr style="background-color: #AAB400; height: 50px;">
+						<th colspan="1">Project Name</th>
+						<th colspan="1">Platform</th>
+						<th colspan="1">System</th>
+						<th colspan="1">Start Date</th>
+						<th colspan="1">End Date</th>
+					</tr>
+					<tr ng-repeat="col in VPC.pageTableRepeat1">
+						<td ng-bind="col.RequestID"></td>
+						<td ng-bind="col.RequestType"></td>
+						<td ng-bind="col.Originator"></td>
+						<td ng-bind="col.Date"></td>
+						<td ng-bind="col.LeadAI"></td>
+					</tr>
+				</table>
+			</div>
+			<nav>
+				<ul class="pagination">
+					<li>
+						<a ng-click="Previous1()">
+							<span>pre</span>
+						</a>
+					</li>
+					<li ng-repeat="page in VPC.pageList1" ng-class="{active: VPC.isActivePage1(page)}">
+						<a ng-click="VPC.selectPage1(page)">{{ page }}</a>
+					</li>
+					<li>
+						<a ng-click="Next1()">
+							<span>next</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+			<div class="row text_size14">
+				<div class="col-md-12 col-xs-12 row_top1">
+					<div class="box_line"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="row_top1">
+					<div class="box_btn_ar">
+						<div class="btn_ar_text">Ok</div>
+					</div>
+				</div>
+				<div class="row_top1">
+					<div class="box_btn_ar">
+						<div class="btn_ar_text">Back</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="foot_contain">
+			<div class="copy_right">© 2016 Syngenta</div>
+		</div>
+	</div>
+</div>

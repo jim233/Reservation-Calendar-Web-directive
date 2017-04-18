@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script>
+			var drag_ = false
+			var D = new Function('obj', 'return document.getElementById(obj);')
+			var oevent = new Function('e', 'if (!e) e = window.event;return e')
+
+			function Move_obj(obj) {
+				var x, y;
+				D(obj).onmousedown = function(e) {
+					drag_ = true;
+					with(this) {
+						style.position = "absolute";
+						var temp1 = offsetLeft;
+						var temp2 = offsetTop;
+						x = oevent(e).clientX;
+						y = oevent(e).clientY;
+						document.onmousemove = function(e) {
+							if (!drag_) return false;
+							with(this) {
+								style.left = temp1 + oevent(e).clientX - x + "px";
+								style.top = temp2 + oevent(e).clientY - y + "px";
+							}
+						}
+					}
+					document.onmouseup = new Function("drag_=false");
+				}
+			}
+		</script>
+		<div onmousedown="Move_obj(this.id)" id="dd" style="width:100px;height:100px;background:red"></div>
+	</body>
+
+</html>

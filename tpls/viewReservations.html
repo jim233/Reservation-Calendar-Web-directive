@@ -1,0 +1,262 @@
+<div class="viewRes_contain">
+	<div class="viewRes_box">
+		<div class="left_part_contain">
+			<div class="left_part_title">Reservation System<span class="help_hover"><img class="help_img" src="images/Images2/icon_help.png">
+				<div class="help_hover_contain">
+					<div class="green_square"></div>
+					<div class="help_text">The Reservation app is an interactive visualisation that display information about system reservations from data stored in a SharePoint list. The user can quickly discover when conflicts occur with the reservations and take immediate action. The tool has many features that help speed up the process of discovering conflicts and managing the vast number of reservations. There are currently around 3,300 activities in the system.</div>
+				</div>
+				</span>
+			</div>
+			<div class="left_part_nav">
+				<div class="left_part_nav_text1" ng-click="VRC.Statistics()">Statistics</div>
+				<div class="left_part_bottom1" ng-show="VRC.showStatistics"></div>
+				<div class="left_part_nav_text2" ng-click="VRC.EventsList()">Events list</div>
+				<div class="left_part_bottom2" ng-show="VRC.showEventsList"></div>
+			</div>
+			<div class="change_part1 submenu_animate" ng-show="VRC.showStatistics">
+				<div class="left_part1">
+					<div class="left_part1_num">111</div>
+					<div class="left_part1_text">Projects total</div>
+					<div class="left_part1_date"><span>2016.1.1</span><span>-</span><span>2016.10.10</span></div>
+				</div>
+				<div class="left_part2">
+					<div class="left_part2_num">90</div>
+					<div class="left_part1_text">Reservation</div>
+					<div class="left_part1_text">Approved</div>
+					<div class="left_part1_date"><span>90%</span></div>
+				</div>
+				<div class="left_part3">
+					<div class="left_part2_num">10</div>
+					<div class="left_part1_text">Conflicts</div>
+					<div class="left_part1_text">Reservations</div>
+					<div class="left_part1_date"><span>10%</span></div>
+				</div>
+			</div>
+			<div class="change_part1 submenu_animate" ng-show="VRC.showEventsList">
+				<div class="left_part_search_contain">
+					<input type="text" class="form-control input_search" ng-model="SearchDetail" />
+					<img class="search_img" src="images/reservation_system_schedule_view_/u1409.png" ng-click="VRC.SearchDetailRows()">
+					<span class="help_hover1"><img class="help_img1" src="images/Images2/icon_help.png">
+						<div class="help_hover_contain1">
+							<div class="green_square1"></div>
+							<div class="help_text1">A user can search all of the activities. The search will look for the Project Name, System ID and the Reservation Contact.</div>
+						</div>
+					</span>
+					<img class="sort_img" src="images/reservation_system_schedule_view_/u1415.png" ng-mouseenter="VRC.sortPartEnter()">
+					<img class="list_img" src="images/reservation_system_schedule_view_/u1509.png" ng-click="VRC.showDetailRows()">
+				</div>
+				<div class="left_part_Detail_contain" id="leftPartDetailContainID">
+					<div class="get_left_part_detail_height" id="GetLeftPartDetailHeight">
+						<div class="left_part_detail_row" ng-repeat="row in VRC.allLeftData | filter:SearchDetail ">
+							<div style="height: 40px;">
+								<div ng-class="{true:'left_arrow_down',false:'left_arrow_up'}[VRC.allLeftData[$index].leftPartRow]" ng-click="VRC.leftPartRowChange(row)"></div>
+								<div class="left_part_detail_text" ng-click="VRC.leftPartRowChange(row)" ng-bind="row.row1DetailText"></div>
+								<div ng-class="{true:'left_part_close_eye',false:'left_part_open_eye'}[row.eyeChange]" ng-click="VRC.eyeChangeFun(row)">
+									<div class="triangle_left"></div>
+									<div class="eye_hover" ng-bind="row.eye1Text"></div>
+								</div>
+							</div>
+							<div class="left_part_detail_row1 submenu_animate" ng-repeat='row1 in row.secondData' ng-show="!row.leftPartRow">
+								<div style="height: 40px;">
+									<div ng-class="{true:'left_arrow_down1',false:'left_arrow_up1'}[row1.leftPartRow1]" ng-click="VRC.leftPartRowChange1(row1)"></div>
+									<div class="left_part_detail_text" ng-bind='row1.row2DetailText' ng-click="VRC.leftPartRowChange1(row1)"></div>
+									<div ng-class="{true:'left_part_close_eye1',false:'left_part_open_eye1'}[row1.eyeChange1]" ng-click="VRC.eyeChangeFun1(row1)">
+										<div class="triangle_left1"></div>
+										<div class="eye_hover1" ng-bind='row1.eye2Text'></div>
+									</div>
+								</div>
+								<div class="left_part_detail_row2 submenu_animate" ng-repeat="row2 in row1.thirdData | orderBy:ProjectDetail" ng-show="!row1.leftPartRow1">
+									<!--'ProjectDate'-->
+									<div ng-class="{true:'haveConfilct_img',false:'noConfilct_img'}[row2.ifConfilct]"></div>
+									<div class="left_part_detail_text2" ng-bind="row2.row3DetailText"></div>
+									<div ng-class="{true:'conflict_red_part',false:'noConfilct_red_part'}[row2.ifConfilct]">Conflict Detail</div>
+								</div>
+							</div>
+						</div>
+						<div class="use_add_bottom" ng-if="VRC.useAddBottom"></div>
+					</div>
+				</div>
+			</div>
+			<div class="sub_sort_start" ng-show="VRC.sortPart" ng-mouseleave="VRC.sortPartLeave()" ng-class="{true:'sub_sort',false:''}[VRC.sortPart]">
+				<div class="sub_content active" ng-click="VRC.SrotByDate()">
+					<div class="white_square"></div>
+					<div href="#" class="">
+						<span class="font_size14">Sorted by date</span>
+					</div>
+				</div>
+				<div class="sub_content active" ng-click="VRC.SrotByName()">
+					<div href="#" class="">
+						<span class="font_size14">Sorted by project name</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="right_part_contain">
+			<div class="right_part12_contain">
+				<div class="right_part_activity">
+					<div class="right_part_activity_title">Showing all activities</div>
+					<div class="right_part_activity_content">
+						<div class="right_part_activity_data" ng-click="VRC.selectYear()">Year</div>
+						<div class="right_part_activity_data" ng-click="VRC.selectQuarter()">Quarter</div>
+						<div class="right_part_activity_data" ng-click="VRC.selectMonth()">Month</div>
+						<div class="right_part_activity_data" ng-click="VRC.selectWeek()">Week</div>
+						<div class="right_part_activity_data1">|</div>
+						<div class="right_part_activity_data2">Start Date：</div>
+						<div class="date_contain">
+							<input type="text" class="form-control input_date calendar_img_input" / id="VRStartDatePicker">
+							<!--<img class="calendar_img1" src="images/add_reservations/u584.png">-->
+						</div>
+						<div class="right_part_activity_data2">End Date：</div>
+						<div class="date_contain">
+							<input type="text" class="form-control input_date calendar_img_input" id="VREndDatePicker" />
+							<!--<img class="calendar_img1" src="images/add_reservations/u584.png">-->
+						</div>
+						<div class="box_btn_ar1">
+							<div class="btn_ar_text1">Search</div>
+						</div>
+						<div class="nav_text_bottom_small" ng-show="VRC.yearLine"></div>
+						<div class="nav_text_bottom_small1" ng-show="VRC.quarterLine"></div>
+						<div class="nav_text_bottom_small2" ng-show="VRC.monthLine"></div>
+						<div class="nav_text_bottom_small3" ng-show="VRC.weekLine"></div>
+					</div>
+				</div>
+				<div ng-class="{true:'right_part_filter',false:'right_part_filter_noborder'}[VRC.rightImgStatus]">
+					<div class="right_part_filter_text">Filter Data：<span class="help_hover"><img class="help_img" src="images/Images2/icon_help.png">
+						<div class="help_hover_contain2">
+						<div class="green_square"></div>
+						<div class="help_text">Multiple filters allow the user to look at exactly the data they want - there are filters for Platform, System ID, Project Name, Activity Type, Reservation Status, and Reservation Contact. A user can also filter on a date range.</div>
+						</div>
+						</span>
+					</div>
+					<div ng-class="{true:'right_part_img_down',false:'right_part_img_up'}[VRC.rightImgStatus]" ng-click="VRC.rightImgChange()"></div>
+				</div>
+			</div>
+			<div class="filter_dropdown_contain" ng-class="{true:'',false:'filter_dropdown_contain1'}[VRC.rightImgStatus]">
+				<div class="dropdown_text11">Platform：</div>
+				<select type="text" class="form-control form_height dropdown_select1"></select>
+				<div class="dropdown_text22">System ID：</div>
+				<select type="text" class="form-control form_height dropdown_select1"></select>
+				<div class="dropdown_text22">Project name：</div>
+				<select type="text" class="form-control form_height dropdown_select1"></select>
+				<div class="dropdown_text1">Activity Type：</div>
+				<select type="text" class="form-control form_height dropdown_select"></select>
+				<div class="dropdown_text2">Reservation Status：</div>
+				<select type="text" class="form-control form_height dropdown_select"></select>
+				<div class="dropdown_text2">Reservation Contact：</div>
+				<select type="text" class="form-control form_height dropdown_select"></select>
+				<div class="dropdown_line"></div>
+				<div class="box_btn_ar2">
+					<div class="btn_ar_text2">OK</div>
+				</div>
+				<div class="box_btn_ar2">
+					<div class="btn_ar_text2">Reset</div>
+				</div>
+			</div>
+			<div class="right_part_tools">
+				<div class="tools_text">Tools Bar</div>
+				<div class="tools_add_img" id="toolAddImg" ng-mousedown="VRC.AddImgDown()" ng-mouseup="VRC.AddImgUp()" ng-class="{true:'tools_add_img',false:'tools_add_img1'}[VRC.AddImgStatus]" ng-click="VRC.AddDateBiger()"></div>
+				<div class="tools_minus_img" id="toolMinusImg" ng-mousedown="VRC.MinusImgDown()" ng-mouseup="VRC.MinusImgUp()" ng-class="{true:'tools_minus_img',false:'tools_minus_img1'}[VRC.MinusImgStatus]" ng-click="VRC.MinusDateSmaller()"></div>
+				<div ng-click="VRC.MoveImgChange()" ng-class="{true:'tools_move_img',false:'tools_move_img1'}[VRC.toolMoveImg]">
+					<div class="help_hover_contain3">
+						<div class="green_square"></div>
+						<div class="help_text">Moving the grid.<br>You can then simply move the mouse left or right to automatically move the grid in the direction of the mouse. the further aways from the navigation circle, the faster the grid moves.</div>
+					</div>
+				</div>
+				<div ng-click="VRC.HandsImgChange()" ng-class="{true:'tools_hands_img',false:'tools_hands_img1'}[VRC.toolHandsImg]">
+					<div class="help_hover_contain4">
+						<div class="green_square"></div>
+						<div class="help_text">Moving the grid.<br>You can move the grid by holding down the mouse and dragging. </div>
+					</div>
+				</div>
+				<div ng-click="VRC.ChooseImgChange()" ng-class="{true:'tools_choose_img',false:'tools_choose_img1'}[VRC.toolChooseImg]">
+					<div class="help_hover_contain5">
+						<div class="green_square"></div>
+						<div class="help_text">Marking the grid.<br>You can add a mark to the grid by clicking on days and dragging the mouse. This would be useful for marking a certain date and checking multiple activities.</div>
+					</div>
+				</div>
+				<div ng-class="{true:'box_btn_ar4',false:'box_btn_ar4_1'}[VRC.toolIfToday]" ng-click="VRC.todayBtnClick()">
+					<div class="btn_ar_text4">Today</div>
+				</div>
+				<div class="box_btn_ar3">
+					<div class="btn_ar_text3">Clear</div>
+				</div>
+			</div>
+			<!--onscroll="rightPartMainOnScroll()" onload="rightPartMainOnLoad()"-->
+			<div id="rightPartMainID" class="right_part_main" ng-class="{'right_part_main_hand': VRC.toolHandsOpen,'right_part_main_choose': VRC.toolChooseOpen}" ng-mouseenter="VRC.EnterMainPart($event)" ng-mousedown="VRC.MainPartMDown($event)" ng-mouseup="VRC.MainPartMUp($event)"
+				ng-mousemove="VRC.MainPartMMove($event)">
+				<div class="right_table_contain" id="getmainheight">
+					<div class="right_table_date_part" id="RightTableDatePartID">
+						<div class="right_table_date_contain" ng-repeat="row in VRC.allRightTopDate">
+							<div style="">
+								<div class="right_table_date_line1" ng-bind="row.YearAndMonth"></div>
+								<div style="display: flex;">
+									<div ng-class="{'right_table_date_line2_15px': VRC.RightDateline15px,'right_table_date_line2_20px': VRC.RightDateline20px,'right_table_date_line2_30px': VRC.RightDateline30px,'right_table_date_line2_35px': VRC.RightDateline35px}" ng-repeat="perDay in row.DayData"
+										ng-bind="perDay"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="right_table_part" id="RightTablePartWidth"></div>
+					<!--<div class="right_table_part1"></div>
+					<div class="right_table_part2"></div>
+					<div class="right_table_part3"></div>
+					<div class="right_table_part1"></div>
+					<div class="right_table_part2"></div>
+					<div class="right_table_part3"></div>-->
+				</div>
+			</div>
+			<div class="right_move_contain" ng-show="VRC.showMoveContain">
+				<img src="images/Images2/icon_quickmove_big.png">
+				<div class="move_triangle_up" ng-mouseenter="VRC.EnterTriangelUp($event)" ng-mouseleave="VRC.LeaveTriangelUp($event)"></div>
+				<div class="move_triangle_down" ng-mouseenter="VRC.EnterTriangelDown($event)" ng-mouseleave="VRC.LeaveTriangelDown($event)"></div>
+				<div class="move_triangle_left" ng-mouseenter="VRC.EnterTriangelLeft($event)" ng-mouseleave="VRC.LeaveTriangelLeft($event)"></div>
+				<div class="move_triangle_right" ng-mouseenter="VRC.EnterTriangelRight($event)" ng-mouseleave="VRC.LeaveTriangelRight($event)"></div>
+			</div>
+			<div class="right_part_bottom_date" ng-class="{'right_part_main_hand': VRC.toolHandsOpen,'right_part_main_choose': VRC.toolChooseOpen}" ng-mouseenter="VRC.EnterMainPart()">
+				<div class="right_bottom_date_contain" ng-repeat="row in VRC.allRightBottomDate">
+					<div class="right_bottom_date_month_contain">
+						<div class="right_bottom_date_month" id="RightBottomMonthWidth" ng-repeat="row2 in row.YearAndMonth.Month" ng-bind="row2" ng-style="{'width':BottomMonthWidth}"></div>
+						<div class="right_bottom_date_year" ng-bind="row.YearAndMonth.Year"></div>
+					</div>
+				</div>
+				<!--<div class="right_bottom_date_contain">
+					<div class="right_bottom_date_month_contain">
+						<div class="right_bottom_date_month">10</div>
+						<div class="right_bottom_date_month">11</div>
+						<div class="right_bottom_date_month">12</div>
+						<div class="right_bottom_date_year">2016</div>
+					</div>
+				</div>-->
+			</div>
+		</div>
+	</div>
+	<div class="foot_contain2"></div>
+	<div class="copy_right">© 2016 Syngenta {{message}}</div>
+</div>
+<fixmoduledirective></fixmoduledirective>
+<!--<script>
+	var ScrollTopD = 0;
+	var ScrollLeftD = 0; 
+	var obj_date;
+
+	function rightPartMainOnLoad() {
+		ScrollTopD = $("#rightPartMainID").scrollTop();
+		ScrollLeftD = $("#rightPartMainID").scrollLeft();
+		obj_date = document.getElementById("RightTableDatePartID");
+		console.log("1234567");
+	};
+
+	function rightPartMainOnScroll() {
+		obj_date = document.getElementById("RightTableDatePartID");
+		if (ScrollTopD != $("#rightPartMainID").scrollTop()) {
+			ScrollTopD = $("#rightPartMainID").scrollTop();
+			if (obj_date) {
+				obj_date.style.top = $("#rightPartMainID").scrollTop() + "px";
+				console.log("aaaaa " + obj_date.style.top)
+			}
+		} else if (ScrollLeftD != $("#rightPartMainID").scrollLeft()) {
+			ScrollLeftD = $("#rightPartMainID").scrollLeft();
+		}
+	};
+</script>-->

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<!--https://doc.daypilot.org/scheduler/angularjs/-->
+		<div style="width: 400px; height: 300px; overflow: auto; border: solid 2px red;">
+			<div style="display: inline-block; position: relative;height: 200px;width: auto; border: 12px solid yellow;">
+				<div style="height: 100px; position: absolute; left: 0;top: 0; background-color: blue; display: flex;">
+					<!--<div style="clear: both;"></div>-->
+					<!--<div style="width: 200px;height: 50px; float:left; border: 2px solid black;"></div>
+					<div style="width: 200px;height: 50px; float:left; border: 2px solid black;"></div>
+					<div style="width: 200px;height: 50px; float:left; border: 2px solid black;"></div>
+					<div style="width: 200px;height: 50px; float:left; border: 2px solid black;"></div>-->
+					<div>
+						<div style="width: 100%; text-align: center;">1231234124</div>
+						<div style="display: flex;">
+							<div style="width: 50px; float:left;height: 50px; border: 2px solid black; text-align: center;">1111</div>
+							<div style="width: 50px; float:left;height: 50px; border: 2px solid black;"></div>
+							<div style="width: 50px; float:left;height: 50px; border: 2px solid black;"></div>
+							<div style="width: 50px; float:left;height: 50px; border: 2px solid black;"></div>
+						</div>
+					</div>
+					<div>
+						<div style="width: 100%; text-align: center;">1231234124</div>
+						<div style="display: flex;">
+							<div style="width: 50px; float:left;height: 50px; border: 2px solid black; text-align: center;">1111</div>
+							<div style="width: 50px; float:left;height: 50px; border: 2px solid black;"></div>
+							<div style="width: 50px; float:left;height: 50px; border: 2px solid black;"></div>
+							<div style="width: 50px; float:left;height: 50px; border: 2px solid black;"></div>
+						</div>
+					</div>
+					<div>
+						<div style="width: 100%; text-align: center;">1231234124</div>
+						<div style="display: flex;">
+							<div style="width: 50px; float:left;height: 50px; border: 2px solid black; text-align: center;">1111</div>
+							<div style="width: 50px; float:left;height: 50px; border: 2px solid black;"></div>
+							<div style="width: 50px; float:left;height: 50px; border: 2px solid black;"></div>
+							<div style="width: 50px; float:left;height: 50px; border: 2px solid black;"></div>
+						</div>
+					</div>
+				</div>
+				<div style="width:100px; height: 300px; background-color: green;"></div>
+				<div style="width:600px; height: 300px; background-color: gray;"></div>
+			</div>
+		</div>
+
+		<div style="height: 100px; position: absolute; left: 0; top: 400px; background-color: blue;">
+			<div style="width: 200px;height: 50px; float:left; border: 2px solid black;"></div>
+			<div style="width: 200px;height: 50px; float:left; border: 2px solid black;"></div>
+			<div style="width: 200px;height: 50px; float:left; border: 2px solid black;"></div>
+			<div style="width: 200px;height: 50px; float:left; border: 2px solid black;"></div>
+		</div>
+
+		<div style="height: 100px; width: 100px; position: absolute; left: 0; top: 600px; background-color: yellowgreen; padding: 10px;">
+			<div style="width: 50px; height: 50px; border: 2px solid black; text-align: center; margin-left: 20px; padding: 10px;">11</div>
+		</div>
+		<div style="height: 100px; width: 100px; position: absolute; left: 0; margin-left: 100px; top: 600px; background-color: yellowgreen; padding: 20px;">
+
+		</div>
+		<script>
+			var t = setTimeout("alert('2 seconds!')", 2000)
+			for (var i = 1; i < 4; i++) {
+				setTimeout("console.log(i)", 1000);
+				setTimeout(function() {
+					console.log(i)
+				}, 1000);
+			}
+			(function() {
+				var a = 'aaa'
+				var export1 = {};
+				console.log(a);
+				export1.getaaa = function() {
+					return "bbb";
+					console.log('bbb');
+				}
+				window.export1 = export1;
+			}());
+			export1.getaaa();
+			
+			function out1() {
+				var a = 11; 
+				console.log(a); 
+//				console.log(b);
+				function out2() {
+					var b = 22;
+					console.log(a);
+					console.log(b)
+				}
+				out2()
+			}
+			out1();
+		</script>
+	</body>
+
+</html>

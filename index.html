@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html ng-app="Calendar">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<title></title>
+		<style></style>
+		<link rel="stylesheet" href="framework/bootstrap-3.0.0/css/bootstrap.css">
+		<link rel="stylesheet" href="framework/datepicker/css/bootstrap-datepicker.css">
+		<link rel="stylesheet" href="framework/datepicker/css/bootstrap-datepicker.css.map">
+		<link rel="stylesheet" href="framework/datepicker/css/bootstrap-datepicker.min.css">
+		<link rel="stylesheet" href="framework/datepicker/css/bootstrap-datepicker.min.css.map">
+  		<!--<link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">-->
+  		<link rel="stylesheet" href="css/index.css">
+		<link rel="stylesheet" href="css/fix.css">
+		<link rel="stylesheet" href="css/temp.css">
+  		<script src="framework/jquery-1.9.1.js"></script>
+  		<script src="framework/jquery-ui.js"></script>
+  		<script src="framework/datepicker/js/datepicker.js"></script>
+		<script src="framework/datepicker/js/bootstrap-datepicker.min.js"></script>
+  		<!--<script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>-->
+  		<script src="framework/angular-1.3.0.14/angular.js"></script>
+		<script src="framework/angular-1.3.0.14/angular-route.js"></script>
+		<script src="framework/angular-ui-router.js"></script>
+		<script src="framework/dist/ocLazyLoad.js"></script>
+		<script src="framework/bootstrap-3.0.0/js/bootstrap.js"></script>
+		<script src="framework/ui-bootstrap-tpls-0.11.0.js"></script>
+		<script src="JS/app.js"></script>
+		<script src="JS/selfDirective.js"></script>
+		<!--<script src="framework/require.js" data-main="main"></script>-->
+	</head>
+
+	<body ng-controller="headerCtrl as header">
+		<div class="sm_nav_contain submenu_animate" ng-show="header.smnavContain">
+			<div class="sm_nav_title">
+				<div class="sm_nav_top"></div>
+				<div class="sm_nav_text">
+					<div class="sm_nav_text_sub" ui-sref="home" ng-click="header.smnavClose()">Home</div>
+				</div>
+				<div class="sm_nav_text">
+					<div class="sm_nav_text_sub">Project</div>
+					<div class="sm_nav_sub submenu_animate" ui-sref="createProject" ng-click="header.smnavClose()">Create Project</div>
+					<div class="sm_nav_sub1 submenu_animate" ui-sref="viewProject" ng-click="header.smnavClose()">View Project</div>
+				</div>
+				<div class="sm_nav_text">
+					<div class="sm_nav_text_sub">Reservations</div>
+					<div class="sm_nav_sub submenu_animate" ui-sref="addReservation" ng-click="header.smnavClose()">Add Reservations</div>
+					<div class="sm_nav_sub1 submenu_animate" ui-sref="viewReservations" ng-click="header.smnavClose()">View Reservations</div>
+					<div class="sm_nav_sub2 submenu_animate" ui-sref="findReservation" ng-click="header.smnavClose()">Find Reservations</div>
+					<div class="sm_nav_sub3 submenu_animate" ui-sref="displayReservationConflicts" ng-click="header.smnavClose()">Display Reservations conflicts</div>
+					<div class="sm_nav_sub4 submenu_animate" ui-sref="findASlot" ng-click="header.smnavClose()">Find a Slot</div>
+				</div>
+				<div class="sm_nav_text1">
+					<div class="sm_nav_text_sub1" ui-sref="aboutFAQ" ng-click="header.smnavClose()">About/FAQ</div>
+				</div>
+				<div class="sm_nav_bottom"></div>
+			</div>
+			<div class="sm_nav_right" ng-click="header.smnavClose()"></div>
+		</div>
+		<div class="">
+			<div class="title_contain">
+				<div class="img_contain">
+					<img class="title_img" src="images/index/u27.png">
+				</div>
+				<div class="text_contain">
+					<div class="title_text">System Reservation Calendar</div>
+				</div>
+			</div>
+			<div class="title_line_contain">
+				<hr class="title_line">
+			</div>
+			<div class="nav_conatin">
+				<ul class="nav_menu">
+					<li class="project_contain1">
+						<a href="#" class="active nav_padding">
+							<span class="" ui-sref="home" ng-click="header.showHome()" ng-mouseenter="header.showline1()" ng-mouseleave="header.hideline1()">Home</span>
+							<div class="nav_text_bottom1" ng-show="header.Projectline1"></div>
+						</a>
+					</li>
+					<li class="project_contain">
+						<a class="active nav_padding">
+							<span class="" ng-click="header.showProject()" ng-mouseenter="header.showline()" ng-mouseleave="header.hideline()">Project</span>
+							<div class="nav_text_bottom" ng-show="header.Projectline"></div>
+						</a>
+						<div ng-show="header.ProjectMenu" ng-mouseleave="header.hideProjectmenu()" class="sub_project">
+							<div class="sub_nav_start" ng-class="{true:'sub_nav',false:''}[header.ProjectMenu]">
+								<div class="sub_content active" ui-sref="createProject">
+									<div class="white_square"></div>
+									<a href="#" class="">
+										<span class="font_size14">Create Project</span>
+									</a>
+								</div>
+								<div class="sub_content active" ui-sref="viewProject">
+									<a href="#" class="">
+										<span class="font_size14">View Project</span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="project_contain2">
+						<a class="active nav_padding">
+							<span class="" ng-click="header.showReservations()" ng-mouseenter="header.showline2()" ng-mouseleave="header.hideline2()">Reservations</span>
+							<div class="nav_text_bottom2" ng-show="header.Projectline2"></div>
+						</a>
+						<div ng-show="header.ReservationsMenu" ng-mouseleave="header.hideReservationsmenu()" class="">
+							<div class="sub_nav_start2" ng-class="{true:'sub_nav',false:''}[header.ReservationsMenu]">
+								<div class="sub_content active" ui-sref="addReservation" ng-click="header.clickAddReservation">
+									<div class="white_square"></div>
+									<a href="#" class="">
+										<span class="font_size14">Add Reservations</span>
+									</a>
+								</div>
+								<div class="sub_content active" ui-sref="viewReservations">
+									<a href="#" class="">
+										<span class="font_size14">View Reservations</span>
+									</a>
+								</div>
+								<div class="sub_content active" ui-sref="findReservation">
+									<a href="#" class="">
+										<span class="font_size14">Find Reservations</span>
+									</a>
+								</div>
+								<div class="sub_content active" ui-sref="displayReservationConflicts">
+									<a href="#" class="">
+										<span class="font_size14">Display Reservations conflicts</span>
+									</a>
+								</div>
+								<div class="sub_content active" ui-sref="findASlot">
+									<a href="#" class="">
+										<span class="font_size14">Find a Slot</span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="project_contain3">
+						<a href="#" class="active nav_padding">
+							<span class="" ui-sref="aboutFAQ" ng-click="header.showAbout()" ng-mouseenter="header.showline3()" ng-mouseleave="header.hideline3()">About/FAQ</span>
+							<div class="nav_text_bottom3" ng-show="header.Projectline3"></div>
+						</a>
+					</li>
+					<li class="project_contain4">
+						<img class="admin_img" src="images/index/u99.png">
+						<a class="active nav_padding">
+							<span class="" ng-click="header.showReservations()" ng-mouseenter="header.showline4()" ng-mouseleave="header.hideline4()">Admin</span>
+						</a>
+						<div class="nav_text_bottom4" ng-show="header.Projectline4"></div>
+						<div ng-show="header.AdminMenu" ng-mouseleave="header.hideAdminmenu()" class="">
+							<div class="sub_nav_start2" ng-class="{true:'sub_nav2',false:''}[header.AdminMenu]">
+								<div class="sub_content active" ui-sref="masterData">
+									<div class="white_square"></div>
+									<a href="#" class="">
+										<span class="font_size14">Master Data</span>
+									</a>
+								</div>
+								<div class="sub_content active" ui-sref="management">
+									<a href="#" class="">
+										<span class="font_size14">Management</span>
+									</a>
+								</div>
+								<div class="sub_content active" ui-sref="useManagement">
+									<a href="#" class="">
+										<span class="font_size14">Use Management</span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<div class="sm_nav_img" ng-mouseenter="header.navEnter()" ng-click="header.smnavOpen()"></div>
+			</div>
+			<div class="title_line_contain1">
+				<hr class="title_line1">
+			</div>
+		</div>
+		<br>
+		<div ui-view="lazyLoadView" class="ng_tpls">
+			
+		</div>
+		<!--<fixmoduledirective></fixmoduledirective>-->
+	</body>
+
+</html>

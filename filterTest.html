@@ -1,0 +1,64 @@
+<!doctype html>
+<html ng-app="myApp">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script src="http://apps.bdimg.com/libs/angular.js/1.2.16/angular.min.js"></script>
+	</head>
+
+	<body>
+
+		<div ng-controller="myAppCtrl">
+			<p>输入过滤:</p>
+
+			<p><input type="text" ng-model="test1"></p>
+			{{gi}}
+			{{docHtml}}
+			<ul>
+				<li ng-repeat="x in names | filter:test1 | orderBy:'country'">
+					<span>{{ (x.name | uppercase) + ', ' + x.country }}</span>
+				</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			var myAppModule = angular.module("myApp", []);
+			myAppModule.controller("myAppCtrl", ["$scope", function($scope,$sce,$log) {
+				$scope.names = [{
+					name: 'Jani',
+					country: 'Norway'
+				}, {
+					name: 'Hege',
+					country: 'Sweden'
+				},{
+					name: 'gi',
+					country: 'gi'
+				},{
+					name: 'Kai',
+					country: 'Denmark'
+				}];
+				$scope.gi='giiii'
+				$sce.trustAsHtml='<span style="color: yellow;">$&</span>';
+				$scope.result = $scope.gi.replace(/gi/, '<span style="color: yellow;">$&</span>');
+				$scope.docHtml= $sce.trustAsHtml();
+			}]);
+			myAppModule.filter("test1", function($sce, $log) {
+				var fn = function(text, search) {
+					$log.info("text: " + text);
+					$log.info("search: " + search);
+					if (!search) {
+						return $sce.trustAsHtml(text);
+					}
+					text = encodeURI(text);
+					search = encodeURI(search);
+					var regex = new RegExp(search, 'gi')
+					var result = text.replace(regex, '<span style="color: yellow;">$&</span>');
+					result = decodeURI(result);
+					$log.info("result: " + result);
+					return $sce.trustAsHtml(result);
+				};
+				return fn;
+			});
+		</script>
+	</body>
+
+</html>

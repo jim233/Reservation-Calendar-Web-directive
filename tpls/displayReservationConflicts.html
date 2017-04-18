@@ -1,0 +1,137 @@
+<div class="big_contain">
+	<div class="AR_box">
+		<div class="sub_contain">
+			<div class="sub_title_contain">
+				<div class="sub_title">Display Reservation conflicts</div>
+				<div class="spell_contain">
+					<div class="spell_btn" ng-click="goAddReservation()">
+						<img class="spell_img" src="images/display_reservation_conflicts/u1023.png">
+						<div class="spell_text">Calendar Display</div>
+						<img class="spell_img1" src="images/find_reservation/u746.png">
+					</div>
+				</div>
+			</div>
+			<div class="row text_size14">
+				<div class="col-md-3 col-xs-5 box_line_height row_top">Reservation contact for project B1：</div>
+				<div class="col-md-3 col-xs-7 row_top">
+					<input type="text" class="form-control form_height addSmallClass" />
+				</div>
+			</div>
+			<div class="row text_size14">
+				<div class="col-md-3 col-xs-5 box_line_height row_top">Technical lead for project B1:</div>
+				<div class="col-md-3 col-xs-7 row_top">
+					<input type="text" class="form-control form_height addSmallClass" />
+				</div>
+			</div>
+			<div class="row text_size14">
+				<div class="col-md-12 col-xs-12 box_line_height row_top"><span>Project A name</span><span> | </span><span>Project B1 name</span></div>
+			</div>
+			<div style="float:left; width: 100%; overflow-x:auto; height:auto;clear:both; margin-top:20px;">
+				<table border="1" cellpadding="3%" width="95%" style="min-width: 700px;">
+					<tr style="background-color: #AAB400; height: 50px;">
+						<th colspan="1">System ID</th>
+						<th colspan="1">Overlapping reservation start</th>
+						<th colspan="1">Overlapping reservation end</th>
+						<th colspan="1">Project A name activity</th>
+						<th colspan="1">Project B1 name activity</th>
+					</tr>
+					<tr ng-repeat="col in DRCC.pageTableRepeat">
+						<td ng-bind="col.RequestID"></td>
+						<td ng-bind="col.RequestType"></td>
+						<td ng-bind="col.Originator"></td>
+						<td ng-bind="col.Date"></td>
+						<td ng-bind="col.LeadAI"></td>
+					</tr>
+				</table>
+			</div>
+			<nav>
+				<ul class="pagination">
+					<li>
+						<a ng-click="Previous()">
+							<span>pre</span>
+						</a>
+					</li>
+					<li ng-repeat="page in DRCC.pageList" ng-class="{active: DRCC.isActivePage(page)}">
+						<a ng-click="DRCC.selectPage(page)">{{ page }}</a>
+					</li>
+					<li>
+						<a ng-click="Next()">
+							<span>next</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+			<div class="row text_size14">
+				<div class="col-md-3 col-xs-5 box_line_height row_top">Reservation contact for project B1：</div>
+				<div class="col-md-3 col-xs-7 row_top">
+					<input type="text" class="form-control form_height addSmallClass" />
+				</div>
+			</div>
+			<div class="row text_size14">
+				<div class="col-md-3 col-xs-5 box_line_height row_top">Technical lead for project B1:</div>
+				<div class="col-md-3 col-xs-7 row_top">
+					<input type="text" class="form-control form_height addSmallClass" />
+				</div>
+			</div>
+			<div class="row text_size14">
+				<div class="col-md-12 col-xs-12 box_line_height row_top"><span>Project A name</span><span> | </span><span>Project B1 name</span></div>
+			</div>
+			<div style="float:left; width: 100%; overflow-x:auto; height:auto;clear:both; margin-top:20px;">
+				<table border="1" cellpadding="3%" width="95%" style="min-width: 700px;">
+					<tr style="background-color: #AAB400; height: 50px;">
+						<th colspan="1">System ID</th>
+						<th colspan="1">Overlapping reservation start</th>
+						<th colspan="1">Overlapping reservation end</th>
+						<th colspan="1">Project A name activity</th>
+						<th colspan="1">Project B1 name activity</th>
+					</tr>
+					<tr ng-repeat="col in DRCC.pageTableRepeat1">
+						<td ng-bind="col.RequestID"></td>
+						<td ng-bind="col.RequestType"></td>
+						<td ng-bind="col.Originator"></td>
+						<td ng-bind="col.Date"></td>
+						<td ng-bind="col.LeadAI"></td>
+					</tr>
+				</table>
+			</div>
+			<nav>
+				<ul class="pagination">
+					<li>
+						<a ng-click="Previous1()">
+							<span>pre</span>
+						</a>
+					</li>
+					<li ng-repeat="page in DRCC.pageList1" ng-class="{active: DRCC.isActivePage1(page)}">
+						<a ng-click="DRCC.selectPage1(page)">{{ page }}</a>
+					</li>
+					<li>
+						<a ng-click="Next1()">
+							<span>next</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+			<div class="row text_size14">
+				<div class="col-md-12 col-xs-12 row_top1">
+					<div class="box_line"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="row_top1">
+					<div class="box_btn_ar">
+						<div class="btn_ar_text">Ok</div>
+					</div>
+				</div>
+				<div class="row_top1">
+					<div class="box_btn_ar">
+						<div class="btn_ar_text">Back</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="foot_contain">
+			<div class="copy_right">© 2016 Syngenta</div>
+		</div>
+	</div>
+	<!--<fixmoduledirective></fixmoduledirective>-->
+</div>

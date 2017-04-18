@@ -1,0 +1,176 @@
+<div class="big_contain">
+	<div class="AR_box">
+		<div class="sub_contain">
+			<div class="sub_title_contain">
+				<div class="sub_title">Create Project</div>
+			</div>
+			<div class="row text_size14">
+				<div class="col-md-2 col-xs-5 box_line_height row_top">Project name：</div>
+				<div class="col-md-3 col-xs-7 row_top">
+					<input type="text" class="form-control form_height " placeholder="Please input the content" />
+				</div>
+				<div class="col-md-offset-1 col-md-2 col-xs-5 box_line_height row_top">Project ID：</div>
+				<div class="col-md-3 col-xs-7 row_top">
+					<input type="text" class="form-control form_height " placeholder="Please input the content" />
+				</div>
+			</div>
+			<div class="row text_size14">
+				<div class="col-md-2 col-xs-5 box_line_height row_top">Reservation status：</div>
+				<div class="col-md-3 col-xs-7 row_top addSmallClass">
+					<select type="text" class="form-control form_height"></select>
+				</div>
+				<div class="col-md-offset-1 col-md-2 col-xs-5 box_line_height row_top">Reservation Contact：</div>
+				<div class="col-md-3 col-xs-7 row_top">
+					<input type="text" class="form-control form_height " placeholder="Please input the content" />
+				</div>
+			</div>
+			<div class="row text_size14">
+				<div class="col-md-2 col-xs-5 box_line_height row_top">Reservation Contact Deputy：</div>
+				<div class="col-md-3 col-xs-7 row_top">
+					<input type="text" class="form-control form_height addSmallClass" placeholder="Please input the content" />
+				</div>
+				<div class="col-md-offset-1 col-md-2 col-xs-5 box_line_height row_top">Technical Lead：</div>
+				<div class="col-md-3 col-xs-7 row_top">
+					<input type="text" class="form-control form_height " placeholder="Please input the content" />
+				</div>
+			</div>
+			<div class="row text_size14">
+				<div class="col-md-12 col-xs-12 row_top1">
+					<div class="box_line"></div>
+				</div>
+			</div>
+			<div class="row text_size14">
+				<div class="col-md-12 col-xs-12 row_top1">
+					Reservations
+				</div>
+			</div>
+			<div style="float:left; width: 100%; overflow-x:auto; height:auto;clear:both; margin-top:20px;">
+				<table border="1" cellpadding="3%" width="95%" style="min-width: 1050px;" id="tableExcel">
+					<tr style="background-color: #AAB400; height: 50px;">
+						<th colspan="1">Activity</th>
+						<th colspan="1">Platform</th>
+						<th colspan="1">System</th>
+						<th colspan="1">Start</th>
+						<th colspan="1">End</th>
+						<th colspan="1">Exclusive</th>
+						<th colspan="1">Status</th>
+						<th colspan="1">Edit</th>
+						<th colspan="1">Delete</th>
+						<th colspan="1">Conflicts</th>
+					</tr>
+					<tbody ng-repeat="col in CPC.pageTableRepeat" ng-show="col.ShowRow"><!--CPC.pageTableRepeat[$index].ShowRow-->
+					<tr>
+						<td style="height: 70px; width: 100px;" rowspan="2" class="tbl_promote_contain">
+							<div class="Activity_text" ><!--ng-show="DeleteRow == $index"-->
+								<div ng-bind="col.RequestID">Cutover</div>
+								<div class="promote_shape"></div>
+								<div class="promote_text" ng-bind="col.RequestType">Comments Comments dsddede Comments Comments dfwdfsdhfjklsdhfjklsdhk</div>
+							</div>
+						</td>
+						<td style="height: 35px;"rowspan="1" ng-bind="col.Originator">2222</td>
+						<td ng-bind="col.Date">3333</td>
+						<td rowspan="2" ng-bind="col.LeadAI">4444</td>
+						<td rowspan="2" ng-bind="col.Country">5555</td>
+						<td rowspan="2" ng-bind="col.CodeDueDate">6666</td>
+						<td class="tbl_promote_contain">
+							<div class="Activity_text">
+								<div  ng-bind="col.TradeName">Approved</div>
+								<div class="promote_shape1"></div>
+								<div class="promote_text1" ng-bind="col.PackSize">Approved on 2016-10-12</div>
+							</div>
+						</td>
+						<td rowspan="2" class="edit_contain" style="width: 80px;">
+							<img class="edit_img" src="images/create_project/u286.png">
+							<a class="edit_text">Edit</a>
+						</td>
+						<td rowspan="2" class="edit_contain" style="width: 100px;">
+							<img class="cancel_img" src="images/create_project/icon_cancel.png">
+							<a class="cancel_text" ng-click="CPC.DeleteData($index)">Delete</a>
+						</td>
+						<td rowspan="2" class="edit_contain" style="width: 120px;">
+							<img class="warn_img" src="images/create_project/icon_warn.png">
+							<a class="warn_text">Conflicts</a>
+						</td>
+					</tr>
+					<tr>
+						<td style="height: 35px;"  ng-bind="col.Status">2222</td>
+						<td ng-bind="col.FirstSale"></td>
+						<td style="color: red;"  ng-bind="col.FirstSale">Conflict</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			<nav>
+				<ul class="pagination">
+					<li>
+						<a ng-click="Previous()">
+							<span>pre</span>
+						</a>
+					</li>
+					<li ng-repeat="page in CPC.pageList" ng-class="{active: CPC.isActivePage(page)}">
+						<a ng-click="CPC.selectPage(page)">{{ page }}</a>
+					</li>
+					<li>
+						<a ng-click="Next()">
+							<span>next</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+			<div class="box_btn" ng-click="goAddReservation()">
+				<div class="btn_icon1"></div>
+				<div class="btn_icon2"></div>
+				<div class="btn_text">Add Reservation</div>
+			</div>
+			<div class="row text_size14">
+				<div class="col-md-2 col-xs-5 box_line_height row_top">Comments：</div>
+			</div>
+			<div class="row text_size14">
+				<div class="col-md-11 col-xs-12 row_top">
+					<textarea class="form-control" rows="6"></textarea>
+				</div>
+			</div>
+			<div class="row text_size14">
+				<div class="col-md-2 col-xs-5 box_line_height row_top">Created date：</div>
+				<div class="col-md-3 col-xs-7 box_line_height row_top">
+					2016-6-12
+				</div>
+				<div class="col-md-offset-1 col-md-2 col-xs-5 box_line_height row_top">Last modified date：</div>
+				<div class="col-md-3 col-xs-7 box_line_height row_top">
+					2016-6-12
+				</div>
+			</div>
+			<div class="row text_size14">
+				<!--<div class="col-md-2 col-xs-5 box_line_height row_top">Approved date：</div>
+				<div class="col-md-3 col-xs-7 box_line_height row_top">
+					2016-6-12
+				</div>-->
+				<div class="col-md-offset-6 col-md-2 col-xs-5 box_line_height row_top">Last modified by：</div>
+				<div class="col-md-3 col-xs-7 box_line_height row_top">
+					2016-6-12
+				</div>
+			</div>
+			<div class="row text_size14">
+				<div class="col-md-12 col-xs-12 row_top1">
+					<div class="box_line"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="row_top1">
+					<div class="box_btn_ar">
+						<div class="btn_ar_text" ng-click="PrintTableToExcel('tableExcel')">Search</div>
+					</div>
+				</div>
+				<div class="row_top1">
+					<div class="box_btn_ar">
+						<div class="btn_ar_text">Cancel</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="foot_contain">
+			<div class="copy_right">© 2016 Syngenta</div>
+		</div>
+	</div>
+</div>
+<fixmoduledirective></fixmoduledirective>
